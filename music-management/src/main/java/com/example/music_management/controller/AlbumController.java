@@ -13,6 +13,8 @@ import java.util.List;
 import com.example.music_management.form.AlbumForm;
 import org.springframework.web.bind.annotation.PostMapping;
 
+//test
+
 @Controller
 @RequestMapping("/albums")
 public class AlbumController {
