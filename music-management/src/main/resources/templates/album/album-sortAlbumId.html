@@ -19,7 +19,7 @@
             <div class = "content">
                 <div>
                     <table>   
-                        <tr th:each="album : ${albums}">
+                        <tr th:each="album : ${sortAlbumId_Albums}">
                             <td width = "50"><span th:text="${album.albumId}">album id</span></td>
                             <td width = "400" ><a th:href="@{/albums/{albumId}(albumId=${album.albumId})}"><span th:text="${album.title}">album title</span></a></td>
                         </tr>
@@ -28,7 +28,7 @@
 
                 <div>
                     <table>
-                        <tr th:each="music : ${musics}">
+                        <tr th:each="music : ${sortAlbumId_Musics}">
                             <td width = "200"><span th:text="${music.releaseDate}">music title</span></td>
                         </tr>
                     </table>
@@ -37,7 +37,7 @@
                 <div>
                     <div>
                         <table>
-                            <tr th:each="music : ${musics}">
+                            <tr th:each="music : ${sortAlbumId_Musics}">
                                 <td width = "400"><span th:text="${music.duration}">music title</span></td>
                             </tr>
                         </table>
@@ -47,38 +47,17 @@
                 <div>
                     <div>
                         <table>
-                            <tr th:each="music : ${musics}">
+                            <tr th:each="music : ${sortAlbumId_Musics}">
                                 <td width = "400"><span th:text="${music.place}">music title</span></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <tr th:each="album : ${albums}">
-                    <!-- アルバムの編集フォーム -->
-                <form th:action="@{/albums/{albumId}/edit(albumId=${album.albumId})}" method="get">
-                    <button type="submit">編集</button>
-                </form>
-
-                <!-- アルバムの削除フォーム -->
-                <form th:action="@{/albums/{albumId}/delete(albumId=${album.albumId})}" method="post">
-                    <button type="submit">削除</button>
-                </form>
-                </tr>
             </div>
         </div>
     </div>
-    
-    <button onclick= "location.href='/albums/sortAlbumId'">ID降順</button>
-    
-    <button onclick= "location.href='/albums/sortDateAndTime'">日時</button>
-
-    <button onclick= "location.href='/albums/sortTitle'">名前</button>
-
-    <form action="/albums/searchName/{searchTitle}(searchTitle=${search})" method="get">
-        <input type="text" name="search" placeholder="検索...">
-        <button type="submit">検索</button>
-    </form>
-
+    <button onclick= "location.href='/albums'">ID昇順</button>
     <div th:replace="~{layout :: footer}"></div>
+
 </body>
 </html>

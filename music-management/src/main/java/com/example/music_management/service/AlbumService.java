@@ -42,4 +42,16 @@ public class AlbumService {
         }
         albumRepository.updateAlbum(album);
     }
+
+    public List<Album> sortAlbumId_Albums() {
+        return albumRepository.sortAlbumId_Albums();
+    }
+
+    public List<Album> sortTitleASC_Albums() {
+        return albumRepository.sortTitleASC_Albums();
+    }
+
+    public List<Album> searchTitle(String search_Title) {
+        return albumRepository.searchTitle(search_Title);
+    }
 }

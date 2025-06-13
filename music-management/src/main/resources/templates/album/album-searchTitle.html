@@ -1,0 +1,23 @@
+<style>
+
+.content {
+    display:flex;
+}
+
+.screen {
+    margin: auto auto;
+    width:1000px;
+}
+</style>
+
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head(アルバム一覧)}"></head>
+<body>
+    <div th:replace="~{layout :: header}"></div>
+        
+    <button onclick= "location.href='/albums'">ID昇順</button>
+    <div th:replace="~{layout :: footer}"></div>
+
+</body>
+</html>

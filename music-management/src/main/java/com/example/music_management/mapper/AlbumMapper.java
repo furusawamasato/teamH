@@ -29,4 +29,13 @@ public interface AlbumMapper {
 
     @Update("UPDATE albums SET title = #{title}, artist = #{artist}, release_date = #{releaseDate} WHERE album_id = #{albumId}")
     void updateAlbum(Album album);
+
+    @Select("SELECT * FROM albums ORDER BY album_id DESC")
+    List<Album> sortAlbumId_Albums();
+
+    @Select("SELECT * FROM albums ORDER BY title ASC")
+    List<Album> sortTitleASC_Albums();
+
+    @Select("SELECT * FROM albums WHERE title LIKE '#{search_Title}'")
+    List<Album> searchTitle(String search_Title);
 }

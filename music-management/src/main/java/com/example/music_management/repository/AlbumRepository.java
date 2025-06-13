@@ -33,4 +33,16 @@ public class AlbumRepository {
     public void updateAlbum(Album album) {
         albumMapper.updateAlbum(album);
     }
+
+    public List<Album> sortAlbumId_Albums() {
+        return albumMapper.sortAlbumId_Albums();
+    }
+
+    public List<Album> sortTitleASC_Albums() {
+        return albumMapper.sortTitleASC_Albums();
+    }
+
+    public List<Album> searchTitle(String search_Title) {
+        return albumMapper.searchTitle(search_Title);
+    }
 }

@@ -1,31 +1,100 @@
+<style>
+.content {
+    display: flex;
+}
+.patientData {
+    width: 250px;
+    height: 200px;
+    text-align:center
+}
+.bookingDate {
+    width: 500px;
+}
+.bookingHead {
+    text-align:center
+}
+.bookingBody {
+    line-height: 4.0;
+    text-align:center
+}
+
+.title {
+    text-align:center
+}
+
+.screen {
+    margin: auto auto;
+    width:750px;
+}
+
+</style>
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout :: head(アルバム詳細)}"></head>
 <body>
     <div th:replace="~{layout :: header}"></div>
-    <h3>アルバム詳細</h3>
-    <table>
-        <tr>
-            <th>アルバムID</th>
-            <td th:text="${album.albumId}"></td>
-        </tr>
-        <tr>
-            <th>タイトル</th>
-            <td th:text="${album.title}"></td>
-        </tr>
-        <tr>
-            <th>アーティスト</th>
-            <td th:text="${album.artist}"></td>
-        </tr>
-        <tr>
-            <th>リリース日</th>
-            <td th:text="${album.releaseDate}"></td>
-        </tr>
-        <tr>
-            <th>作成日時</th>
-            <td th:text="${#temporals.format(album.createdAt, 'yyyy-MM-dd HH:mm:ss')}"></td>
-        </tr>
-    </table>
+    <div class="screen">
+        <div class="content" >
+            <div>
+                <div class="title">
+                    <h3> カルテ詳細</h3>
+                </div>
+                
+                <table class="patientData">
+                    <tr>
+                        <th>名前</th>
+                        <td th:text="${album.albumId}"></td> 
+                    </tr>
+                    <tr>
+                        <th>血液型</th>
+                        <td th:text="${album.title}"></td>
+                    </tr>
+                    <tr>
+                        <th>病名</th>
+                        <td th:text="${album.artist}"></td>
+                    </tr>
+                    <tr>
+                        <th>症状</th>
+                        <td th:text="${album.releaseDate}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <div class="title">
+                    <h3> 来院記録・予定</h3>
+                </div>
+
+                <table class="bookingDate">
+                    <thead class="bookingHead">
+                        <th>コース</th>
+                        <th>日付</th>
+                        <th>時間</th>
+                        <th>使用場所</th>
+                    </thead>
+                    <tbody class="bookingBody">
+                        <tr th:each="music : ${musics}"> 
+                            <td><span th:text="${music.title}">music title</span></td>
+                            
+                            <td><span th:text="${music.releaseDate}">music release-date</span></td>
+                            <td><span th:text="${music.duration}">music duration</span></td>
+                            <td><span th:text="${music.place}">music place</span></td>
+                            <td>
+                                <form th:action="@{/albums/{albumId}/musics/{musicId}/delete(albumId=${album.albumId}, musicId=${music.musicId})}" method="post">
+                                    <button type="submit">削除</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="title">
+                    <a th:href="@{/albums/{albumId}/musics/new(albumId=${album.albumId})}">予約追加</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
     <a href="/albums">一覧に戻る</a>
     <div th:replace="~{layout :: footer}"></div>
 </body>

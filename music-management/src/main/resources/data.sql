@@ -4,7 +4,7 @@ INSERT INTO albums (title, artist, release_date) VALUES
     ('Cosmic Vibes', 'Galaxy Harmonics', '2024-01-18');
 
 
-INSERT INTO musics (title, duration, album_id) VALUES
-    ('Sunset', '00:03:45', 1),
-    ('Moonlight', '00:04:12', 1),
-    ('Eternal Memories', '00:05:45', 2);
+INSERT INTO musics (title, release_date, duration, place, album_id) VALUES
+    ('Sunset', '2021-08-10', '00:00', 'A室', 1),
+    ('Moonlight', '2021-07-10', '00:10', 'B室', 2),
+    ('Eternal Memories', '2021-06-10',  '00:20', 'C室', 3);
